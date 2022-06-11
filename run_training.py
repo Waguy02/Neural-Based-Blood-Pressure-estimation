@@ -27,7 +27,8 @@ def main(args):
     optimizer = Adam(network.parameters(), lr=args.learning_rate)
     loss=None #"INstancitate loss
     logging.info("Training : "+model_name)
-    trainer=Trainer(network,optimizer,loss,model_name,args.num_workers,args.batch_size,args.epochs,args.autorun_tb)
+    trainer = Trainer(network, loss, optimizer, args.epochs, args.batch_size, args.num_workers, args.epochs,
+                      args.autorun_tb)
     trainer.fit()
     
     
