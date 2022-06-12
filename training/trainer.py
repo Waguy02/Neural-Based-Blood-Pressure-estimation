@@ -66,7 +66,7 @@ class Trainer:
         _ = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=None, shell=True)
     def fit(self):
         if self.autorun_tb:self.run_tensorboard()
-        logging.info("Launch training...")
+        logging.info("Launch training on {}".format(device))
         self.network.to(device)
         itr=self.start_epoch*len(self.train_data_loader)*self.batch_size##Global counter for steps
         best_loss=1e20#infinity
@@ -109,7 +109,7 @@ class Trainer:
                 #loss.backward()
                 self.optimizer.step()
                 self.optimizer.zero_grad()
-                self.scheduler.step(loss_value)
+
 
                 """
                 4.Writing logs and tensorboard data, loss and other metrics
@@ -124,6 +124,7 @@ class Trainer:
             self.network.save_state()
             
             epoch_loss_val=self.eval(epoch)
+            self.scheduler.step(epoch_loss_val)
             if epoch_loss_val<best_loss:
                 logging.info("Saving the best model")
                 best_loss=epoch_loss_val
