@@ -1,4 +1,4 @@
-from dataset.dataset import create_dataloader, DatasetType
+from dataset.dataset_features import create_dataloader, DatasetType
 
 
 class Inferencer:
@@ -8,5 +8,5 @@ class Inferencer:
     def __init__(self):
         """
         """
-        self.test_dataloader=create_dataloader(type=DatasetType.TEST,shuffle=False,batch_size=16)
+        self.test_dataloader=create_dataloader(type=DatasetType.TEST, shuffle=False, batch_size=16)
         pass

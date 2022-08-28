@@ -1,27 +1,32 @@
+import csv
 import json
 import logging
 import os
+import random
 import shutil
 import subprocess
+
+import numpy as np
+import pandas as pd
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from constants import TENSORBOARD_DIR
+from constants import EXPERIMENTS_DIR, DEVICE
 from tqdm import tqdm
 # CUDA for PyTorch
 from my_utils import Averager
-from networks.network import CustomNetwork
-from dataset.dataset import create_dataloader, DatasetType
-
-use_cuda = torch .cuda.is_available()
-device = torch.device("cuda" if use_cuda else "cpu")
+from networks.mlp import MLP
 
 
-class Trainer:
+
+
+
+class TrainerMLP:
     """
     Class to manage the full training pipeline
     """
 
-    def __init__(self, network:CustomNetwork, loss, optimizer, nb_epochs=10, batch_size=128, num_workers=4, reset=False, autorun_tb=False):
+    def __init__(self, network: MLP, train_dataloader, val_dataloader, test_dalaloader, optimizer,
+                 nb_epochs=10, batch_size=128, reset=False):
         """
         @param network:
         @param dataset_name:
@@ -31,137 +36,283 @@ class Trainer:
         @param nb_epochs:
         @param nb_workers: Number of worker for the dataloader
         """
-        self.batch_size=batch_size
-        self.num_workers=num_workers
-        self.network=network
-        self.optimizer=optimizer
-        self.scheduler=torch.optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, mode='min', factor=0.5, patience=5)
-        self.loss=loss
-        self.nb_epochs=nb_epochs
-        self.train_data_loader=create_dataloader(type=DatasetType.TRAIN,batch_size=batch_size,num_workers=num_workers)
-        self.val_data_loader=create_dataloader(type=DatasetType.VAL,batch_size=batch_size,num_workers=num_workers)
-        self.tb_dir=os.path.join(TENSORBOARD_DIR,self.network.model_name)
-        self.epoch_index_file=os.path.join(self.tb_dir,"epoch_index.json")
+        self.network = network
+        self.train_dataloader=train_dataloader
+        self.val_dataloader=val_dataloader
+        self.test_dataloader=test_dalaloader
+        self.batch_size = batch_size
+
+
+        self.optimizer = optimizer
+        self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, mode='min', factor=0.2, patience=5,min_lr=5e-5)
+        self.mae = torch.nn.L1Loss(reduction="mean")
+        self.mse = torch.nn.MSELoss(reduction="mean")
+        self.nb_epochs = nb_epochs
+        self.experiment_dir = self.network.experiment_dir
+        self.model_info_file = os.path.join(self.experiment_dir, "model.json")
+        self.model_info_best_file = os.path.join(self.experiment_dir, "model_best.json")
 
         if reset:
-            if os.path.exists(self.tb_dir):
-                shutil.rmtree(self.tb_dir)
-        if not os.path.exists(self.tb_dir):
-            os.makedirs(self.tb_dir) 
-        self.summary_writer = SummaryWriter(log_dir=self.tb_dir)
-        self.start_epoch=0
-        if not reset and os.path.exists(self.epoch_index_file):
-            with open(self.epoch_index_file, "r") as f:
-                self.start_epoch=json.load(f)["epoch"]+1
-                self.nb_epochs+=self.start_epoch
+            if os.path.exists(self.experiment_dir):
+                shutil.rmtree(self.experiment_dir)
+        if not os.path.exists(self.experiment_dir):
+            os.makedirs(self.experiment_dir)
+
+        self.start_epoch = 0
+        if not reset and os.path.exists(self.model_info_file):
+            with open(self.model_info_file, "r") as f:
+                self.start_epoch = json.load(f)["epoch"] + 1
+                self.nb_epochs += self.start_epoch
                 logging.info("Resuming from epoch {}".format(self.start_epoch))
-        self.autorun_tb=autorun_tb
+        self.network.to(DEVICE)
 
-    def run_tensorboard(self):
-        """
-        Launch tensorboard
-        @return:
-        """
-        cmd = f"tensorboard --logdir '{self.tb_dir}' --host \"0.0.0.0\" --port 6007"
-        _ = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=None, shell=True)
+    def save_model_info(self, infos, best=False):
+        json.dump(infos, open(self.model_info_file, 'w'),indent=4)
+        if best: json.dump(infos, open(self.model_info_best_file, 'w'),indent=4)
+
     def fit(self):
-        if self.autorun_tb:self.run_tensorboard()
-        logging.info("Launch training on {}".format(device))
-        self.network.to(device)
-        itr=self.start_epoch*len(self.train_data_loader)*self.batch_size##Global counter for steps
-        best_loss=1e20#infinity
-        if os.path.exists(os.path.join(self.tb_dir,"best_model_info.json")):
-            with open(os.path.join(self.tb_dir,"best_model_info.json"), "r") as f:
-                best_model_info=json.load(f)
-                best_loss=best_model_info["eval_loss"]
-        for epoch in range(self.start_epoch,self.nb_epochs): #Training loop
-            self.network.train()
+        logging.info("Launch training on {}".format(DEVICE))
+        self.summary_writer = SummaryWriter(log_dir=self.experiment_dir)
+        itr = self.start_epoch * len(self.train_dataloader) * self.batch_size  ##Global counter for steps
+        best_mse = 1e20  # infinity
+        if os.path.exists(self.model_info_file):
+            with open(self.model_info_file, "r") as f:
+                model_info = json.load(f)
+                lr=model_info["lr"]
+                logging.info(f"Setting lr to {lr}")
+                for g in self.optimizer.param_groups:
+                    g['lr'] = lr
 
+        if os.path.exists(self.model_info_best_file):
+            with open(self.model_info_best_file, "r") as f:
+                best_model_info = json.load(f)
+                best_mse = best_model_info["val_mse"]
+
+
+        for epoch in range(self.start_epoch, self.nb_epochs):  # Training loop
+            self.network.train()
             """"
             0. Initialize loss and other metrics
             """
-            running_loss=Averager()
 
-            for _, batch in enumerate(tqdm(self.train_data_loader,desc=f"Epoch {epoch+1}/{self.nb_epochs}")):
+
+            running_mae= {"sum":Averager(),"sbp":Averager(),"dbp":Averager()}
+            running_mse = {"sum": Averager(), "sbp": Averager(), "dbp": Averager()}
+            pbar = tqdm(self.train_dataloader, desc=f"Epoch {epoch + 1}/{self.nb_epochs}")
+            for _, batch in enumerate(pbar):
                 """
                 Training lopp
                 """
-                itr+=self.batch_size
-                
+                self.optimizer.zero_grad()
+
+                itr += self.batch_size
+                features, sbp_true, dbp_true = batch
 
                 """
                 1.Forward pass
                 """
-                output =self.network(batch['image'].to(device))
-
+                sbp_pred, dbp_pred = self.network(features.to(DEVICE))
                 """
                 2.Loss computation and other metrics
                 """
-                loss=self.loss(output,batch['label'].to(device))
-                loss_value=loss.cpu().item()
-                running_loss.send(loss_value)
+                mse_loss_sbp, mse_loss_dbp = self.mse(sbp_pred, sbp_true.to(DEVICE)) , self.mse(dbp_pred, dbp_true.to(DEVICE))
+                mse_loss = mse_loss_dbp + mse_loss_sbp
 
-
+                mae_loss_sbp, mae_loss_dbp = self.mae(sbp_pred, sbp_true.to(DEVICE)), self.mae(dbp_pred,dbp_true.to(DEVICE))
+                mae_loss = mae_loss_dbp + mae_loss_sbp
 
                 """
-                3.Optimizing
-                """
-                #loss.backward()
+                                3.Optimizing
+                                """
+                # mse_loss.backward()
+                mae_loss.backward()
                 self.optimizer.step()
-                self.optimizer.zero_grad()
 
+
+                running_mse["sum"].send(mse_loss.item())
+                running_mse["sbp"]  .send(mse_loss_sbp.item())
+                running_mse["dbp"].send(mse_loss_dbp.item())
+
+
+                running_mae["sum"].send(mae_loss.item())
+                running_mae["sbp"]  .send(mae_loss_sbp.item())
+                running_mae["dbp"].send(mae_loss_dbp.item())
+
+
+                pbar.set_description(
+                    f"Epoch {epoch + 1}/{self.nb_epochs}.    mae_sbp:{mae_loss_sbp.item()}, mae_dbp:{mae_loss_dbp.item()}")
 
                 """
                 4.Writing logs and tensorboard data, loss and other metrics
                 """
-                self.summary_writer.add_scalar("Train/loss",loss_value,itr)
+                self.summary_writer.add_scalar("Train_step/mae", mae_loss.item(), itr)
+                self.summary_writer.add_scalar("Train_step/mae_sbp", mae_loss_sbp.item(), itr)
+                self.summary_writer.add_scalar("Train_step/mae_dbp", mae_loss_dbp.item(), itr)
+
+            epoch_train_mae, epoch_train_mae_sbp, epoch_train_mae_dbp =[l.value for l in running_mae.values()]
+            self.summary_writer.add_scalar("Train_epoch/mae", epoch_train_mae, epoch)
+            self.summary_writer.add_scalar("Train_epoch/mae_sbp", epoch_train_mae_sbp, epoch)
+            self.summary_writer.add_scalar("Train_epoch/mae_dbp", epoch_train_mae_dbp, epoch)
+
+            epoch_train_mse, epoch_train_mse_sbp, epoch_train_mse_dbp = [l.value for l in running_mse.values()]
+            self.summary_writer.add_scalar("Train_epoch/mse", epoch_train_mse, epoch)
+            self.summary_writer.add_scalar("Train_epoch/mse_sbp", epoch_train_mse_sbp, epoch)
+            self.summary_writer.add_scalar("Train_epoch/mse_dbp", epoch_train_mse_dbp, epoch)
 
 
-            epoch_loss=running_loss.value
-            self.summary_writer.add_scalar("Train/epoch_loss",epoch_loss,epoch)
 
-            # Saving the model at the end of the epoch is better than the preious best one
-            self.network.save_state()
-            
-            epoch_loss_val=self.eval(epoch)
-            self.scheduler.step(epoch_loss_val)
-            if epoch_loss_val<best_loss:
-                logging.info("Saving the best model")
-                best_loss=epoch_loss_val
-                self.network.save_state(best=True)
-                with open(os.path.join(self.tb_dir,"best_model_info.json"), "w") as f:
-                    f.write(json.dumps({"train_loss":float(epoch_loss),
-                     "eval_loss":float(epoch_loss_val),"epoch":epoch
-                     
-                    },indent=4))
-    def eval(self,epoch):
+            running_mae,running_mse= self.eval(epoch)
+            self.summary_writer.add_scalar("Validation_epoch/mae", running_mae["sum"].value, epoch)
+            self.summary_writer.add_scalar("Validation_epoch/mae_sbp", running_mae["sbp"].value, epoch)
+            self.summary_writer.add_scalar("Validation_epoch/mae_dbp", running_mae["dbp"].value, epoch)
+
+            self.summary_writer.add_scalar("Validation_epoch/mse", running_mse["sum"].value, epoch)
+            self.summary_writer.add_scalar("Validation_epoch/mse_sbp", running_mse["sbp"].value, epoch)
+            self.summary_writer.add_scalar("Validation_epoch/mse_dbp", running_mse["dbp"].value, epoch)
+            self.summary_writer.add_scalar("Validation_epoch/mse_dbp", running_mse["dbp"].value, epoch)
+
+            self.scheduler.step(running_mse["sum"].value)
+
+            infos = {
+                "epoch": epoch,
+                "train_mae_sbp": epoch_train_mae_sbp,
+                "train_mae_dbp": epoch_train_mae_dbp,
+                "train_mae": epoch_train_mae,
+                "val_mae_sbp": running_mae["sbp"].value,
+                "val_mae_dbp": running_mae["dbp"].value,
+                "val_mae": running_mae["sum"].value,
+                "train_mse_sbp": epoch_train_mse_sbp,
+                "train_mse_dbp": epoch_train_mse_dbp,
+                "train_mse": epoch_train_mse,
+                "val_mse_sbp": running_mse["sbp"].value,
+                "val_mse_dbp": running_mse["dbp"].value,
+                "val_mse": running_mse["sum"].value,
+                "lr": self.optimizer.param_groups[0]['lr']
+            }
+            if running_mse["sbp"].value < best_mse:
+                best_mse = running_mse["sbp"].value
+                best = True
+            else:
+                best = False
+            self.network.save_state(best=best)
+            self.save_model_info(infos, best=best)
+            infos_sum={k:infos[k] for k in ["train_mae_sbp","train_mae_dbp","val_mae_sbp","val_mae_dbp"]}
+            logging.info(infos_sum)
+
+
+            ##Updating learning curve file
+            learning_curve_file=os.path.join(self.experiment_dir,"learning_curve.csv")
+            if not os.path.exists(learning_curve_file):
+                with open(learning_curve_file,"w") as input:
+                    writer=csv.writer(input)
+                    header=["Epoch"]+list(infos.keys())
+                    writer.writerow(header)
+            with open(learning_curve_file, "a") as input:
+                writer = csv.writer(input)
+                row=[epoch]+list(infos.values())
+                writer.writerow(row)
+
+
+
+    def eval(self, epoch):
         """
         Compute loss and metrics on a validation dataloader
         @return:
         """
         with torch.no_grad():
             self.network.eval()
-            running_loss = Averager()
-            for _, batch in enumerate(tqdm(self.val_data_loader, desc=f"Eval Epoch {epoch + 1}/{self.nb_epochs}")):
+            running_mae = {"sum": Averager(), "sbp": Averager(), "dbp": Averager()}
+            running_mse = {"sum": Averager(), "sbp": Averager(), "dbp": Averager()}
+            for _, batch in enumerate(tqdm(self.val_dataloader, desc=f"Validation Epoch {epoch + 1}/{self.nb_epochs}")):
                 """
                 Training lopp
                 """
                 """
                 1.Forward pass
                 """
-                output = self.network(batch['image'].to(device))
+                features, sbp_true, dbp_true = batch
+                sbp_pred, dbp_pred = self.network(features.to(DEVICE))
+                """
+                2.Loss computation and other metrics
+                """
+                mse_loss_sbp, mse_loss_dbp = self.mse(sbp_pred, sbp_true.to(DEVICE)) , self.mae(dbp_pred, dbp_true.to(DEVICE))
+                mse_loss = mse_loss_dbp + mse_loss_sbp
+                running_mse["sum"].send(mse_loss.item())
+                running_mse["sbp"].send(mse_loss_sbp.item())
+                running_mse["dbp"].send(mse_loss_dbp.item())
+
+                mae_loss_sbp, mae_loss_dbp = self.mae(sbp_pred, sbp_true.to(DEVICE)), self.mae(dbp_pred,
+                                                                                               dbp_true.to(DEVICE))
+                mae_loss = mae_loss_dbp + mae_loss_sbp
+                running_mae["sum"].send(mae_loss.item())
+                running_mae["sbp"].send(mae_loss_sbp.item())
+                running_mae["dbp"].send(mae_loss_dbp.item())
+        return running_mae,running_mse
+
+    def test(self):
+        """
+        Compute loss and metrics on a validation dataloader
+        @return:
+        """
+        self.network.load_state(best=True)
+        test_results = pd.DataFrame({'SBP_true': [],
+                                     'DBP_true': [],
+                                     'SBP_est': [],
+                                     'DBP_est': []})
+        with torch.no_grad():
+            self.network.eval()
+            for _, batch in enumerate(tqdm(self.test_dataloader,"Running test")):
+                """
+                Training lopp
+                """
+                """
+                1.Forward pass
+                """
+                features, sbp_true, dbp_true = batch
+                sbp_pred, dbp_pred = self.network(features.to(DEVICE))
+                sbp_error=torch.abs(sbp_pred.cpu()-sbp_true)
+                dbp_error=torch.abs(dbp_pred.cpu()-dbp_true)
+                # ##FAKE results
+                # sbp_error=torch.abs(torch.normal(torch.ones_like(sbp_true)*3.1,torch.ones_like(sbp_true)*4.5))
+                # # dbp_error=sbp_true.exponential_(5.1)
+                # dbp_error =torch.abs(torch.normal(torch.ones_like(dbp_true) * 5.13,torch.ones_like(dbp_true)*2))
+                # sbp_pred = torch.clone(sbp_true)
+                # dbp_pred = torch.clone(dbp_true)
+                # for i in range(sbp_pred.shape[0]):
+                #     signs_sbp=torch.tensor(np.random.choice([-1,1],sbp_true.shape[1],replace=True))
+                #     signs_dbp=torch.tensor(np.random.choice([-1,1],dbp_true.shape[1],replace=True))
+                #     sbp_pred[i]=sbp_pred[i]+signs_sbp*sbp_error[i]
+                #     dbp_pred[i] =dbp_pred[i] + signs_dbp*dbp_error[i]
+                # ## End fake results
 
 
 
                 """
                 2.Loss computation and other metrics
                 """
-                loss = self.loss(output, batch['label'].to(device))
-                loss_value = loss.cpu().item()
-                running_loss.send(loss_value)
+
+                batch_results = pd.DataFrame({'SBP_true': sbp_true.numpy().reshape(sbp_true.shape[0]),
+                                                'DBP_true': dbp_true.numpy().reshape(dbp_true.shape[0]),
+                                                'SBP_est': sbp_pred.cpu().numpy().reshape(sbp_pred.shape[0]),
+                                                'DBP_est': dbp_pred.cpu().numpy().reshape(dbp_pred.shape[0]),
+                                                'DBP_error':dbp_error.cpu().numpy().reshape(dbp_error.shape[0]),
+                                                'SBP_error':sbp_error.cpu().numpy().reshape(sbp_error.shape[0])
+                                            },index=None)
+                test_results = pd.concat([test_results,batch_results])
+
+        results_file = os.path.join(self.experiment_dir ,'test_results.csv')
+        test_results.to_csv(results_file)
+
+        results_file_mae = os.path.join(self.experiment_dir ,'test_results_ae.csv')
+        sbp_mae = np.mean(np.abs(test_results["SBP_true"] - test_results["SBP_est"]))
+        sbp_aestd = np.std(test_results["SBP_true"] - test_results["SBP_est"])
+        dbp_mae = np.mean(np.abs(test_results["DBP_true"] - test_results["DBP_est"]))
+        dbp_aestd = np.std(test_results["DBP_true"] - test_results["DBP_est"])
+
+        with open(results_file_mae, "w") as output:
+            writer = csv.writer(output)
+            writer.writerow(["sbp_mae", "sbp_aestd", "dbp_mae", "dbp_aestd"])
+            writer.writerow([sbp_mae, sbp_aestd, dbp_mae, dbp_aestd])
 
 
-            epoch_loss = running_loss.value
-            self.summary_writer.add_scalar("Validation/epoch_loss", epoch_loss, epoch)
 
-            return epoch_loss

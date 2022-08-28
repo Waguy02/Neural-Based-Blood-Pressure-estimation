@@ -3,6 +3,8 @@ import os
 from enum import Enum
 from itertools import islice
 import numpy as np
+import torch
+
 
 def read_json(path_json):
     with open(path_json, encoding='utf8') as json_file:
@@ -49,6 +51,13 @@ def load_matrix(filename,auto_delete=False):
         os.remove(filename)
     return matrix
 
+
+def create_dataloader(dataset, batch_size= 256, shuffle= False, num_workers=2):
+    """
+    Create dataloader for the dataset
+    """
+    dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers,drop_last=False)
+    return dataloader
 
 
 class Averager:
