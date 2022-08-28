@@ -1,0 +1,141 @@
+Model name :mlp_4_features
+Launch training on cuda
+Saving best model
+{'train_mae_sbp': 76.3925109986336, 'train_mae_dbp': 33.01490371457992, 'val_mae_sbp': 15.832172632217407, 'val_mae_dbp': 10.083142042160034}
+Saving best model
+{'train_mae_sbp': 14.044767964270807, 'train_mae_dbp': 9.76262027986588, 'val_mae_sbp': 13.219922304153442, 'val_mae_dbp': 6.774215340614319}
+Saving best model
+{'train_mae_sbp': 12.730441831773327, 'train_mae_dbp': 6.734548414907148, 'val_mae_sbp': 12.305394649505615, 'val_mae_dbp': 6.694052696228027}
+Saving best model
+{'train_mae_sbp': 12.524072893204227, 'train_mae_dbp': 6.6394801293649985, 'val_mae_sbp': 12.399686574935913, 'val_mae_dbp': 6.675888180732727}
+{'train_mae_sbp': 12.395158213953819, 'train_mae_dbp': 6.596574137287755, 'val_mae_sbp': 12.282985210418701, 'val_mae_dbp': 6.507687211036682}
+{'train_mae_sbp': 12.365493743650374, 'train_mae_dbp': 6.4953994904795005, 'val_mae_sbp': 11.984920024871826, 'val_mae_dbp': 6.401519775390625}
+{'train_mae_sbp': 12.163800116508238, 'train_mae_dbp': 6.38489766274729, 'val_mae_sbp': 12.364341259002686, 'val_mae_dbp': 6.51355767250061}
+{'train_mae_sbp': 12.054458679691438, 'train_mae_dbp': 6.308811249271516, 'val_mae_sbp': 12.14569354057312, 'val_mae_dbp': 6.44425642490387}
+{'train_mae_sbp': 11.986187658002299, 'train_mae_dbp': 6.29564102234379, 'val_mae_sbp': 12.02784013748169, 'val_mae_dbp': 6.350431203842163}
+Saving best model
+{'train_mae_sbp': 11.898144845039614, 'train_mae_dbp': 6.218466435709307, 'val_mae_sbp': 11.927714109420776, 'val_mae_dbp': 6.264513611793518}
+Saving best model
+{'train_mae_sbp': 12.024036438234392, 'train_mae_dbp': 6.252837073418402, 'val_mae_sbp': 11.712971210479736, 'val_mae_dbp': 6.186047673225403}
+{'train_mae_sbp': 11.923854920171923, 'train_mae_dbp': 6.206941389268445, 'val_mae_sbp': 11.746893167495728, 'val_mae_dbp': 6.392037868499756}
+{'train_mae_sbp': 11.925568026881065, 'train_mae_dbp': 6.173518703829858, 'val_mae_sbp': 11.84673547744751, 'val_mae_dbp': 6.272511839866638}
+{'train_mae_sbp': 11.952143792183168, 'train_mae_dbp': 6.200603423580047, 'val_mae_sbp': 11.875758171081543, 'val_mae_dbp': 6.170235753059387}
+{'train_mae_sbp': 11.759645185162944, 'train_mae_dbp': 6.082500996128205, 'val_mae_sbp': 12.156239986419678, 'val_mae_dbp': 6.298250198364258}
+Saving best model
+{'train_mae_sbp': 11.857623223335512, 'train_mae_dbp': 6.123252591779155, 'val_mae_sbp': 11.624269008636475, 'val_mae_dbp': 6.232311010360718}
+Saving best model
+{'train_mae_sbp': 11.834284905464418, 'train_mae_dbp': 6.181813147760207, 'val_mae_sbp': 11.545263767242432, 'val_mae_dbp': 6.138777375221252}
+{'train_mae_sbp': 11.692820456720167, 'train_mae_dbp': 6.070872629842451, 'val_mae_sbp': 11.622386455535889, 'val_mae_dbp': 6.038578033447266}
+{'train_mae_sbp': 11.661639090507261, 'train_mae_dbp': 6.035164494668284, 'val_mae_sbp': 11.820170164108276, 'val_mae_dbp': 6.086427688598633}
+{'train_mae_sbp': 11.768356876988564, 'train_mae_dbp': 6.122614399079354, 'val_mae_sbp': 11.718605041503906, 'val_mae_dbp': 6.103286981582642}
+{'train_mae_sbp': 11.76510626269925, 'train_mae_dbp': 6.0641600085843, 'val_mae_sbp': 11.981990814208984, 'val_mae_dbp': 6.078406572341919}
+{'train_mae_sbp': 11.766559662357453, 'train_mae_dbp': 6.084432171237085, 'val_mae_sbp': 11.983651638031006, 'val_mae_dbp': 6.1910988092422485}
+{'train_mae_sbp': 11.666811204725697, 'train_mae_dbp': 6.003676137616558, 'val_mae_sbp': 11.489997148513794, 'val_mae_dbp': 6.04412567615509}
+{'train_mae_sbp': 11.508449123751733, 'train_mae_dbp': 5.901131445361722, 'val_mae_sbp': 11.396304368972778, 'val_mae_dbp': 5.850082278251648}
+{'train_mae_sbp': 11.455042992868732, 'train_mae_dbp': 5.862288890346404, 'val_mae_sbp': 11.37373161315918, 'val_mae_dbp': 5.848582744598389}
+{'train_mae_sbp': 11.39174424448321, 'train_mae_dbp': 5.8551448391329854, 'val_mae_sbp': 11.36764144897461, 'val_mae_dbp': 5.850609660148621}
+Saving best model
+{'train_mae_sbp': 11.35865697553081, 'train_mae_dbp': 5.840069140157392, 'val_mae_sbp': 11.33539366722107, 'val_mae_dbp': 5.88657820224762}
+{'train_mae_sbp': 11.310461198129962, 'train_mae_dbp': 5.851893640333606, 'val_mae_sbp': 11.422457933425903, 'val_mae_dbp': 5.911534428596497}
+{'train_mae_sbp': 11.266974018466088, 'train_mae_dbp': 5.849607052341584, 'val_mae_sbp': 11.307646751403809, 'val_mae_dbp': 5.902632474899292}
+Saving best model
+{'train_mae_sbp': 11.305273517485588, 'train_mae_dbp': 5.8544147552982455, 'val_mae_sbp': 11.235901594161987, 'val_mae_dbp': 5.876903772354126}
+{'train_mae_sbp': 11.210207231583134, 'train_mae_dbp': 5.823630579056278, 'val_mae_sbp': 11.200035095214844, 'val_mae_dbp': 5.893771052360535}
+{'train_mae_sbp': 11.22066903883411, 'train_mae_dbp': 5.821448587602185, 'val_mae_sbp': 11.183112144470215, 'val_mae_dbp': 5.837090373039246}
+{'train_mae_sbp': 11.228481723416236, 'train_mae_dbp': 5.846060122213056, 'val_mae_sbp': 11.174902439117432, 'val_mae_dbp': 5.8633482456207275}
+Saving best model
+{'train_mae_sbp': 11.210371448147681, 'train_mae_dbp': 5.813745037201913, 'val_mae_sbp': 11.103764057159424, 'val_mae_dbp': 5.84823739528656}
+{'train_mae_sbp': 11.210356712341309, 'train_mae_dbp': 5.839191329094671, 'val_mae_sbp': 11.151856899261475, 'val_mae_dbp': 5.885984301567078}
+{'train_mae_sbp': 11.206252344192997, 'train_mae_dbp': 5.806250310713245, 'val_mae_sbp': 11.096011638641357, 'val_mae_dbp': 5.832543849945068}
+{'train_mae_sbp': 11.162034250074818, 'train_mae_dbp': 5.820299579251197, 'val_mae_sbp': 11.150321960449219, 'val_mae_dbp': 5.8340065479278564}
+Saving best model
+{'train_mae_sbp': 11.227445540889617, 'train_mae_dbp': 5.801103868792134, 'val_mae_sbp': 11.126147985458374, 'val_mae_dbp': 5.840585112571716}
+{'train_mae_sbp': 11.20802104088568, 'train_mae_dbp': 5.818787082549064, 'val_mae_sbp': 11.073124408721924, 'val_mae_dbp': 5.854150772094727}
+{'train_mae_sbp': 11.168797400689893, 'train_mae_dbp': 5.812131343349334, 'val_mae_sbp': 11.107604503631592, 'val_mae_dbp': 5.855229377746582}
+{'train_mae_sbp': 11.127700467263498, 'train_mae_dbp': 5.787757350552466, 'val_mae_sbp': 11.062663793563843, 'val_mae_dbp': 5.811344623565674}
+{'train_mae_sbp': 11.120410488497827, 'train_mae_dbp': 5.777849443497196, 'val_mae_sbp': 11.061151266098022, 'val_mae_dbp': 5.825679779052734}
+{'train_mae_sbp': 11.08379037918583, 'train_mae_dbp': 5.776971878543977, 'val_mae_sbp': 11.04345440864563, 'val_mae_dbp': 5.813619494438171}
+{'train_mae_sbp': 11.089274314142042, 'train_mae_dbp': 5.7498668701417985, 'val_mae_sbp': 11.126274347305298, 'val_mae_dbp': 5.810723304748535}
+{'train_mae_sbp': 11.041798530086394, 'train_mae_dbp': 5.730979734851468, 'val_mae_sbp': 11.021874189376831, 'val_mae_dbp': 5.7778342962265015}
+{'train_mae_sbp': 10.981950759887695, 'train_mae_dbp': 5.716224808846751, 'val_mae_sbp': 11.017562866210938, 'val_mae_dbp': 5.790603995323181}
+{'train_mae_sbp': 11.00172608898532, 'train_mae_dbp': 5.723705307129891, 'val_mae_sbp': 10.999539375305176, 'val_mae_dbp': 5.786693215370178}
+Saving best model
+{'train_mae_sbp': 10.9766664197368, 'train_mae_dbp': 5.721163841985887, 'val_mae_sbp': 10.996417999267578, 'val_mae_dbp': 5.793161034584045}
+{'train_mae_sbp': 11.01379745237289, 'train_mae_dbp': 5.733902562049128, 'val_mae_sbp': 10.994265794754028, 'val_mae_dbp': 5.79525625705719}
+{'train_mae_sbp': 10.990538935507498, 'train_mae_dbp': 5.71999849811677, 'val_mae_sbp': 10.98978304862976, 'val_mae_dbp': 5.779217839241028}
+{'train_mae_sbp': 11.007325141660628, 'train_mae_dbp': 5.735067167589741, 'val_mae_sbp': 10.966482400894165, 'val_mae_dbp': 5.775039792060852}
+{'train_mae_sbp': 10.96441675001575, 'train_mae_dbp': 5.715007843509797, 'val_mae_sbp': 10.997132301330566, 'val_mae_dbp': 5.773426055908203}
+{'train_mae_sbp': 10.982809251354587, 'train_mae_dbp': 5.7236562082844396, 'val_mae_sbp': 10.960000991821289, 'val_mae_dbp': 5.7731276750564575}
+{'train_mae_sbp': 11.008632475329984, 'train_mae_dbp': 5.732642835186374, 'val_mae_sbp': 11.008341550827026, 'val_mae_dbp': 5.793477296829224}
+{'train_mae_sbp': 10.981513146431215, 'train_mae_dbp': 5.7158035462902435, 'val_mae_sbp': 10.995963096618652, 'val_mae_dbp': 5.775289297103882}
+{'train_mae_sbp': 10.964905400430002, 'train_mae_dbp': 5.709535721809633, 'val_mae_sbp': 10.984605073928833, 'val_mae_dbp': 5.772654294967651}
+{'train_mae_sbp': 10.955465962809901, 'train_mae_dbp': 5.698908713556105, 'val_mae_sbp': 10.984521627426147, 'val_mae_dbp': 5.7695828676223755}
+{'train_mae_sbp': 10.972117639357045, 'train_mae_dbp': 5.725250244140625, 'val_mae_sbp': 10.989311933517456, 'val_mae_dbp': 5.766478538513184}
+{'train_mae_sbp': 10.94553304487659, 'train_mae_dbp': 5.714467110172395, 'val_mae_sbp': 10.981005907058716, 'val_mae_dbp': 5.767587423324585}
+{'train_mae_sbp': 10.977017187303112, 'train_mae_dbp': 5.704371129312823, 'val_mae_sbp': 10.982032060623169, 'val_mae_dbp': 5.766390562057495}
+{'train_mae_sbp': 10.942327499389648, 'train_mae_dbp': 5.700899324109478, 'val_mae_sbp': 10.983062744140625, 'val_mae_dbp': 5.768423676490784}
+{'train_mae_sbp': 10.972387283079085, 'train_mae_dbp': 5.705961596581243, 'val_mae_sbp': 10.990661382675171, 'val_mae_dbp': 5.768090486526489}
+{'train_mae_sbp': 10.968905818077825, 'train_mae_dbp': 5.714097945920883, 'val_mae_sbp': 10.977771520614624, 'val_mae_dbp': 5.7668821811676025}
+{'train_mae_sbp': 10.972899436950684, 'train_mae_dbp': 5.71669360130064, 'val_mae_sbp': 10.982001304626465, 'val_mae_dbp': 5.76620078086853}
+{'train_mae_sbp': 10.94454405384679, 'train_mae_dbp': 5.699918270111084, 'val_mae_sbp': 10.98697566986084, 'val_mae_dbp': 5.7666754722595215}
+{'train_mae_sbp': 10.954219510478358, 'train_mae_dbp': 5.698485605178341, 'val_mae_sbp': 10.978436708450317, 'val_mae_dbp': 5.765448808670044}
+{'train_mae_sbp': 10.944186733615014, 'train_mae_dbp': 5.703834764419064, 'val_mae_sbp': 10.970268964767456, 'val_mae_dbp': 5.764816522598267}
+{'train_mae_sbp': 10.934393605878276, 'train_mae_dbp': 5.698141051876929, 'val_mae_sbp': 10.985126733779907, 'val_mae_dbp': 5.7676039934158325}
+{'train_mae_sbp': 10.973349755810153, 'train_mae_dbp': 5.696842701204361, 'val_mae_sbp': 10.981765747070312, 'val_mae_dbp': 5.765496134757996}
+{'train_mae_sbp': 10.947320599709787, 'train_mae_dbp': 5.7094181737592145, 'val_mae_sbp': 10.975688934326172, 'val_mae_dbp': 5.766967415809631}
+{'train_mae_sbp': 10.934144912227508, 'train_mae_dbp': 5.692264295393421, 'val_mae_sbp': 10.978407382965088, 'val_mae_dbp': 5.766093969345093}
+{'train_mae_sbp': 10.95837660758726, 'train_mae_dbp': 5.7054033279418945, 'val_mae_sbp': 10.981635093688965, 'val_mae_dbp': 5.766916394233704}
+{'train_mae_sbp': 10.930202176493983, 'train_mae_dbp': 5.695488714402722, 'val_mae_sbp': 10.97656798362732, 'val_mae_dbp': 5.766413331031799}
+{'train_mae_sbp': 10.965871995495212, 'train_mae_dbp': 5.718018316453503, 'val_mae_sbp': 10.974396467208862, 'val_mae_dbp': 5.766018509864807}
+{'train_mae_sbp': 10.959863385846537, 'train_mae_dbp': 5.702320729532549, 'val_mae_sbp': 10.975963592529297, 'val_mae_dbp': 5.764080286026001}
+{'train_mae_sbp': 10.974864436734107, 'train_mae_dbp': 5.706337574989565, 'val_mae_sbp': 10.997767686843872, 'val_mae_dbp': 5.7690441608428955}
+{'train_mae_sbp': 10.941048499076597, 'train_mae_dbp': 5.705424770232169, 'val_mae_sbp': 10.979181051254272, 'val_mae_dbp': 5.76699960231781}
+{'train_mae_sbp': 10.954907540352114, 'train_mae_dbp': 5.707792558977681, 'val_mae_sbp': 10.974647283554077, 'val_mae_dbp': 5.76427435874939}
+{'train_mae_sbp': 10.940528469700967, 'train_mae_dbp': 5.701135927631009, 'val_mae_sbp': 10.982906103134155, 'val_mae_dbp': 5.7696754932403564}
+{'train_mae_sbp': 10.94736748356973, 'train_mae_dbp': 5.705850278177569, 'val_mae_sbp': 10.980332374572754, 'val_mae_dbp': 5.766093850135803}
+{'train_mae_sbp': 10.946760731358681, 'train_mae_dbp': 5.701429120955929, 'val_mae_sbp': 10.97316575050354, 'val_mae_dbp': 5.765393853187561}
+{'train_mae_sbp': 10.935878661371046, 'train_mae_dbp': 5.703209184831189, 'val_mae_sbp': 10.981417179107666, 'val_mae_dbp': 5.76737105846405}
+{'train_mae_sbp': 10.960070425464261, 'train_mae_dbp': 5.706776911212552, 'val_mae_sbp': 10.975539684295654, 'val_mae_dbp': 5.764834046363831}
+{'train_mae_sbp': 10.961135802730437, 'train_mae_dbp': 5.7104467576549895, 'val_mae_sbp': 10.974376440048218, 'val_mae_dbp': 5.76521635055542}
+{'train_mae_sbp': 10.946896522275862, 'train_mae_dbp': 5.7077182031446885, 'val_mae_sbp': 10.979637384414673, 'val_mae_dbp': 5.765873908996582}
+{'train_mae_sbp': 10.961902433826078, 'train_mae_dbp': 5.705859215028824, 'val_mae_sbp': 10.982200860977173, 'val_mae_dbp': 5.767852544784546}
+{'train_mae_sbp': 10.937639082631756, 'train_mae_dbp': 5.696650043610604, 'val_mae_sbp': 10.980249166488647, 'val_mae_dbp': 5.769306302070618}
+{'train_mae_sbp': 10.960906890130811, 'train_mae_dbp': 5.699282692324731, 'val_mae_sbp': 10.975799798965454, 'val_mae_dbp': 5.765609383583069}
+{'train_mae_sbp': 10.950153504648517, 'train_mae_dbp': 5.698350675644413, 'val_mae_sbp': 10.980393171310425, 'val_mae_dbp': 5.767389535903931}
+{'train_mae_sbp': 10.942218842044953, 'train_mae_dbp': 5.705044407998362, 'val_mae_sbp': 10.980460405349731, 'val_mae_dbp': 5.768210291862488}
+{'train_mae_sbp': 10.950882788627379, 'train_mae_dbp': 5.710671732502599, 'val_mae_sbp': 10.970001935958862, 'val_mae_dbp': 5.76528799533844}
+{'train_mae_sbp': 10.949379982486848, 'train_mae_dbp': 5.701455454672536, 'val_mae_sbp': 10.975661754608154, 'val_mae_dbp': 5.767277479171753}
+{'train_mae_sbp': 10.961682781096428, 'train_mae_dbp': 5.711750599645799, 'val_mae_sbp': 10.970152616500854, 'val_mae_dbp': 5.764862656593323}
+{'train_mae_sbp': 10.958310496422552, 'train_mae_dbp': 5.702109382998559, 'val_mae_sbp': 10.97872257232666, 'val_mae_dbp': 5.768307209014893}
+{'train_mae_sbp': 10.954605440939627, 'train_mae_dbp': 5.6927316419539915, 'val_mae_sbp': 10.977701187133789, 'val_mae_dbp': 5.766651630401611}
+{'train_mae_sbp': 10.949357709577006, 'train_mae_dbp': 5.6928314855021815, 'val_mae_sbp': 10.983510732650757, 'val_mae_dbp': 5.768279433250427}
+{'train_mae_sbp': 10.943120125801332, 'train_mae_dbp': 5.692527463359218, 'val_mae_sbp': 10.980892658233643, 'val_mae_dbp': 5.767170548439026}
+{'train_mae_sbp': 10.980280291649603, 'train_mae_dbp': 5.726281581386443, 'val_mae_sbp': 10.969476222991943, 'val_mae_dbp': 5.765985369682312}
+{'train_mae_sbp': 10.973933035327542, 'train_mae_dbp': 5.695666697717482, 'val_mae_sbp': 10.971840143203735, 'val_mae_dbp': 5.766536116600037}
+{'train_mae_sbp': 10.96797106342931, 'train_mae_dbp': 5.7167163356657955, 'val_mae_sbp': 10.97944164276123, 'val_mae_dbp': 5.767918109893799}
+{'train_mae_sbp': 10.933792944877379, 'train_mae_dbp': 5.706582530852287, 'val_mae_sbp': 10.977403402328491, 'val_mae_dbp': 5.768307685852051}
+{'train_mae_sbp': 10.93476015521634, 'train_mae_dbp': 5.701217774421938, 'val_mae_sbp': 10.977713108062744, 'val_mae_dbp': 5.766482353210449}
+{'train_mae_sbp': 10.982215942875031, 'train_mae_dbp': 5.713943666027438, 'val_mae_sbp': 10.982638359069824, 'val_mae_dbp': 5.767089486122131}
+{'train_mae_sbp': 10.974306568022698, 'train_mae_dbp': 5.712849832350208, 'val_mae_sbp': 10.971993923187256, 'val_mae_dbp': 5.76510751247406}
+{'train_mae_sbp': 10.9523895940473, 'train_mae_dbp': 5.717747303747362, 'val_mae_sbp': 10.979711532592773, 'val_mae_dbp': 5.76619815826416}
+{'train_mae_sbp': 10.944001751561318, 'train_mae_dbp': 5.69485415181806, 'val_mae_sbp': 10.983682870864868, 'val_mae_dbp': 5.770132780075073}
+{'train_mae_sbp': 10.963135073261876, 'train_mae_dbp': 5.7064288508507515, 'val_mae_sbp': 10.978385925292969, 'val_mae_dbp': 5.76697039604187}
+{'train_mae_sbp': 10.965548730665638, 'train_mae_dbp': 5.709638303326022, 'val_mae_sbp': 10.972861051559448, 'val_mae_dbp': 5.765391945838928}
+{'train_mae_sbp': 10.938664528631396, 'train_mae_dbp': 5.706745670687768, 'val_mae_sbp': 10.981998443603516, 'val_mae_dbp': 5.767321825027466}
+{'train_mae_sbp': 10.946980291797269, 'train_mae_dbp': 5.711795345429452, 'val_mae_sbp': 10.985051155090332, 'val_mae_dbp': 5.769397854804993}
+{'train_mae_sbp': 10.969624488584456, 'train_mae_dbp': 5.70564616111017, 'val_mae_sbp': 10.980281829833984, 'val_mae_dbp': 5.773414492607117}
+{'train_mae_sbp': 10.938627981370495, 'train_mae_dbp': 5.703922256346671, 'val_mae_sbp': 10.979082584381104, 'val_mae_dbp': 5.765613913536072}
+{'train_mae_sbp': 10.966252973002772, 'train_mae_dbp': 5.703689206031061, 'val_mae_sbp': 10.97600793838501, 'val_mae_dbp': 5.767732381820679}
+{'train_mae_sbp': 10.945125395251859, 'train_mae_dbp': 5.695044455989715, 'val_mae_sbp': 10.979020833969116, 'val_mae_dbp': 5.767078876495361}
+{'train_mae_sbp': 10.939232118668095, 'train_mae_dbp': 5.710222351935602, 'val_mae_sbp': 10.970386981964111, 'val_mae_dbp': 5.766559362411499}
+{'train_mae_sbp': 10.964980402300435, 'train_mae_dbp': 5.713581485133017, 'val_mae_sbp': 10.989960432052612, 'val_mae_dbp': 5.767452359199524}
+{'train_mae_sbp': 10.968506013193439, 'train_mae_dbp': 5.712364642850814, 'val_mae_sbp': 10.978675603866577, 'val_mae_dbp': 5.767577886581421}
+{'train_mae_sbp': 10.956638366945329, 'train_mae_dbp': 5.703279326038976, 'val_mae_sbp': 10.973191022872925, 'val_mae_dbp': 5.766228556632996}
+{'train_mae_sbp': 10.919906523919874, 'train_mae_dbp': 5.6881214111082015, 'val_mae_sbp': 10.971828937530518, 'val_mae_dbp': 5.76532518863678}
+{'train_mae_sbp': 10.969678263510428, 'train_mae_dbp': 5.704426934642177, 'val_mae_sbp': 10.978803396224976, 'val_mae_dbp': 5.769186496734619}
+{'train_mae_sbp': 10.95181683571108, 'train_mae_dbp': 5.69870682685606, 'val_mae_sbp': 10.97270393371582, 'val_mae_dbp': 5.764860033988953}
+{'train_mae_sbp': 10.945146868305821, 'train_mae_dbp': 5.700892186933948, 'val_mae_sbp': 10.980057716369629, 'val_mae_dbp': 5.766695618629456}
+{'train_mae_sbp': 10.956625815360777, 'train_mae_dbp': 5.695786845299505, 'val_mae_sbp': 10.976221084594727, 'val_mae_dbp': 5.765315294265747}
+{'train_mae_sbp': 10.947843951563682, 'train_mae_dbp': 5.714837181952692, 'val_mae_sbp': 10.984251499176025, 'val_mae_dbp': 5.7682496309280396}
+{'train_mae_sbp': 10.934884871205975, 'train_mae_dbp': 5.6989619962630735, 'val_mae_sbp': 10.967751502990723, 'val_mae_dbp': 5.767095327377319}
+Loading best model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\mlp_4_features\mlp_4_features.pt

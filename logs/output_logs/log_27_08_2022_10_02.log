@@ -1,0 +1,6 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_features_data_mat_21\base_features_data_mat_21.pt
+Resuming from epoch 4
+Launch training on cuda
+Setting lr to 0.01
+Saving best model
+{'train_mae_sbp': 18.118024079695992, 'train_mae_dbp': 8.738482064409219, 'val_mae_sbp': 18.257062026432582, 'val_mae_dbp': 9.009965028081622}

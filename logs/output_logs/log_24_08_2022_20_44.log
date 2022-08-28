@@ -1,0 +1,3 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_mlp_21\base_mlp_21.pt
+Resuming from epoch 50
+Loading best model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_mlp_21\base_mlp_21.pt

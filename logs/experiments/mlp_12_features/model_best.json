@@ -1,0 +1,30 @@
+{
+    "epoch": 166,
+    "train_mae_sbp": 6.338550613772485,
+    "train_mae_dbp": 3.636561716756513,
+    "train_mae": 9.975112330528997,
+    "val_mae_sbp": 6.57667350769043,
+    "val_mae_dbp": 3.7719619274139404,
+    "val_mae": 10.34863543510437,
+    "train_mse_sbp": 93.95745874220326,
+    "train_mse_dbp": 30.867373866419637,
+    "train_mse": 124.82483303931451,
+    "val_mse_sbp": 97.9530143737793,
+    "val_mse_dbp": 3.7719619274139404,
+    "val_mse": 101.72497749328613,
+    "lr": 0.004000000000000001,
+    "features": [
+        "CP",
+        "DT",
+        "SUT",
+        "SUT_DT_ADD",
+        "SW_DW_ADD10",
+        "SW_DW_ADD25",
+        "SW_DW_ADD33",
+        "SW_DW_ADD50",
+        "SW_DW_ADD66",
+        "SW_DW_ADD75",
+        "DW10",
+        "SW_DW_DIV_50"
+    ]
+}

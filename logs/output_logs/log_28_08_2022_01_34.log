@@ -1,0 +1,8 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_features_data_mmic\base_features_data_mmic.pt
+Resuming from epoch 39
+Launch training on cuda
+Setting lr to 0.001
+Saving best model
+{'train_mae_sbp': 8.894248553684779, 'train_mae_dbp': 4.393838746207101, 'val_mae_sbp': 0, 'val_mae_dbp': 0}
+{'train_mae_sbp': 8.916187695094518, 'train_mae_dbp': 4.405763557979038, 'val_mae_sbp': 0, 'val_mae_dbp': 0}
+{'train_mae_sbp': 8.906040600367955, 'train_mae_dbp': 4.4189446313040595, 'val_mae_sbp': 0, 'val_mae_dbp': 0}

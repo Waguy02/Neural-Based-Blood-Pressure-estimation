@@ -1,0 +1,25 @@
+Launch training on cuda
+Saving best model
+{'train_mae_sbp': 26.07005782734264, 'train_mae_dbp': 12.279758033752442, 'val_mae_sbp': 18.58344676417689, 'val_mae_dbp': 8.242183246920186}
+{'train_mae_sbp': 17.947122386585583, 'train_mae_dbp': 7.56735461321744, 'val_mae_sbp': 17.895145600841893, 'val_mae_dbp': 7.4060180571771435}
+Saving best model
+{'train_mae_sbp': 17.726680975827303, 'train_mae_dbp': 7.209457761157643, 'val_mae_sbp': 17.230225886068038, 'val_mae_dbp': 7.076285400698262}
+{'train_mae_sbp': 17.628132768110795, 'train_mae_dbp': 7.137793614647605, 'val_mae_sbp': 17.1260958948443, 'val_mae_dbp': 7.107310679651076}
+Saving best model
+{'train_mae_sbp': 17.631354023326526, 'train_mae_dbp': 7.138492181084373, 'val_mae_sbp': 17.11738460294662, 'val_mae_dbp': 6.909574193339194}
+Saving best model
+{'train_mae_sbp': 17.5436093971946, 'train_mae_dbp': 7.0330685459483755, 'val_mae_sbp': 17.246110593118974, 'val_mae_dbp': 7.017027139663696}
+{'train_mae_sbp': 17.508055277737704, 'train_mae_dbp': 7.04154379974712, 'val_mae_sbp': 16.998542554916874, 'val_mae_dbp': 6.790987214734478}
+{'train_mae_sbp': 17.487161433480004, 'train_mae_dbp': 6.972196076566523, 'val_mae_sbp': 17.900073251416607, 'val_mae_dbp': 6.845641874497937}
+Saving best model
+{'train_mae_sbp': 17.432373554923316, 'train_mae_dbp': 6.911338787945834, 'val_mae_sbp': 17.143226577389626, 'val_mae_dbp': 6.694231986999512}
+{'train_mae_sbp': 17.452283127524638, 'train_mae_dbp': 6.950300152952021, 'val_mae_sbp': 17.22548900112029, 'val_mae_dbp': 6.9758178957047}
+{'train_mae_sbp': 17.418926310105757, 'train_mae_dbp': 6.9428787283463915, 'val_mae_sbp': 17.005739042835852, 'val_mae_dbp': 6.7557201846953365}
+{'train_mae_sbp': 17.336209422024815, 'train_mae_dbp': 6.834654626846313, 'val_mae_sbp': 16.962545087260583, 'val_mae_dbp': 6.793878116915303}
+Saving best model
+{'train_mae_sbp': 17.328827056884766, 'train_mae_dbp': 6.850047711459073, 'val_mae_sbp': 17.253732204437256, 'val_mae_dbp': 7.29406589077365}
+{'train_mae_sbp': 17.37228694048795, 'train_mae_dbp': 6.8502803785150705, 'val_mae_sbp': 18.640791108531335, 'val_mae_dbp': 7.454029567780033}
+Saving best model
+{'train_mae_sbp': 17.3635556307706, 'train_mae_dbp': 6.902979134646329, 'val_mae_sbp': 16.79939389997913, 'val_mae_dbp': 6.666745124324676}
+Saving best model
+{'train_mae_sbp': 17.246891625144265, 'train_mae_dbp': 6.794027593786066, 'val_mae_sbp': 17.20578162900863, 'val_mae_dbp': 6.65404369754176}

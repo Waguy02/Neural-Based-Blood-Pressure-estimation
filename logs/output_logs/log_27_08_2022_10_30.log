@@ -1,0 +1,2 @@
+Launch training on cuda
+{'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan}

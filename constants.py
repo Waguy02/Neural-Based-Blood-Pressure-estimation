@@ -3,9 +3,11 @@ import os
 import torch
 
 ROOT_DIR=os.path.dirname(os.path.realpath(__file__))
-# FEATURES_DATA_DIR= r"F:\Projets\Gaby project\NeuralnetworkBPestimation\data\features_data_mat_21"
-FEATURES_DATA_DIR= r"F:\Projets\Gaby project\NeuralnetworkBPestimation\data\features_data_mmic"
-WINDOWS_DATA_DIR= r"F:\Projets\Gaby project\NeuralnetworkBPestimation\data\windows_data_mmic"
+FEATURES_DATA_DIR= os.path.join(ROOT_DIR, "data/features_data_mmic_baseline")
+WINDOWS_DATA_DIR= os.path.join(ROOT_DIR,"data/windows_data_mmic")
+#
+
+
 RAW_DATA_FILE=r"F:\Projets\Gaby project\NeuralnetworkBPestimation\win2_ppg.h5"
 
 N_FEATURES=21

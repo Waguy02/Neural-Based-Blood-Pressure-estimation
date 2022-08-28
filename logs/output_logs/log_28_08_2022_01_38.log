@@ -1,0 +1,10 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_features_data_mmic\base_features_data_mmic.pt
+Resuming from epoch 54
+Launch training on cuda
+Setting lr to 0.0002
+{'train_mae_sbp': 9.600149512290955, 'train_mae_dbp': 4.579474627971649, 'val_mae_sbp': 17.432315826416016, 'val_mae_dbp': 6.421231746673584}
+{'train_mae_sbp': 9.246294617652893, 'train_mae_dbp': 4.522918105125427, 'val_mae_sbp': 20.27968406677246, 'val_mae_dbp': 5.8675336837768555}
+{'train_mae_sbp': 9.280156373977661, 'train_mae_dbp': 4.523507475852966, 'val_mae_sbp': 15.78349494934082, 'val_mae_dbp': 5.725234508514404}
+{'train_mae_sbp': 9.258421540260315, 'train_mae_dbp': 4.5361557602882385, 'val_mae_sbp': 11.696629524230957, 'val_mae_dbp': 5.1925435066223145}
+{'train_mae_sbp': 9.187825083732605, 'train_mae_dbp': 4.543063819408417, 'val_mae_sbp': 14.497635841369629, 'val_mae_dbp': 5.3845696449279785}
+{'train_mae_sbp': 9.122971415519714, 'train_mae_dbp': 4.539140582084656, 'val_mae_sbp': 13.922582626342773, 'val_mae_dbp': 5.142324924468994}

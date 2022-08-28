@@ -1,0 +1,4 @@
+Model name :mlp_12_features
+Launch training on cuda
+Saving best model
+{'train_mae_sbp': 26.731446535356582, 'train_mae_dbp': 12.922562168490503, 'val_mae_sbp': 9.743346418653216, 'val_mae_dbp': 5.389134781701224}

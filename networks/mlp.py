@@ -7,13 +7,13 @@ from constants import ROOT_DIR, N_FEATURES, DEVICE
 
 
 class MLP(nn.Module):
-    def __init__(self, experiment_dir,reset=False):
+    def __init__(self, experiment_dir,n_features,reset=False):
         super(MLP, self).__init__()
         self.experiment_dir=experiment_dir
         self.model_name=os.path.basename(self.experiment_dir)
         self.save_experiment_dir=experiment_dir
         self.reset = reset
-
+        self.n_features=n_features
         self.setup_dirs()
         self.setup_network()
         if not reset:self.load_state()
@@ -24,12 +24,11 @@ class MLP(nn.Module):
         @return:
         """
         self.base_mlp=torch.nn.Sequential(
-            nn.Linear(N_FEATURES,35),
-            nn.Sigmoid(),
+            nn.Linear(self.n_features,35),
+            nn.Hardsigmoid(),
             nn.BatchNorm1d(35),
             nn.Linear(35, 20),
-            # nn.LayerNorm(20),
-            nn.Sigmoid(),
+            nn.Hardsigmoid(),
             nn.BatchNorm1d(20),
         )
         self.sbp_dense=nn.Sequential(

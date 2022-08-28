@@ -1,0 +1,4 @@
+Training : base_mlp
+Launch training on cuda
+{'epoch': 0, 'train_mae': 48.4089434178483, 'train_mae_sbp': 30.513337212563965, 'train_mae_dbp': 17.895606210902443, 'val_mae': 31.924662720667172, 'val_mae_sbp': 21.438749372142635, 'val_mae_dbp': 10.485913217884221, 'lr': 0.001}
+{'epoch': 1, 'train_mae': 31.0931877113758, 'train_mae_sbp': 20.86287653253075, 'train_mae_dbp': 10.230311211149191, 'val_mae': 30.690519848914995, 'val_mae_sbp': 20.558937085817938, 'val_mae_dbp': 10.131582795757136, 'lr': 0.001}

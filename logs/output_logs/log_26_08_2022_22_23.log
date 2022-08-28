@@ -1,0 +1,14 @@
+Launch training on cuda
+Saving best model
+{'train_mae_sbp': 26.21579994711765, 'train_mae_dbp': 15.737807733143947, 'val_mae_sbp': 19.084324820288295, 'val_mae_dbp': 11.252261844174615}
+Saving best model
+{'train_mae_sbp': 17.977500976518144, 'train_mae_dbp': 10.828919548396916, 'val_mae_sbp': 17.95103693008423, 'val_mae_dbp': 10.442655596239813}
+Saving best model
+{'train_mae_sbp': 17.68292222281759, 'train_mae_dbp': 10.304909139640571, 'val_mae_sbp': 18.10055395652508, 'val_mae_dbp': 10.059579931456467}
+{'train_mae_sbp': 17.562023131422293, 'train_mae_dbp': 10.245854232662408, 'val_mae_sbp': 18.198952050044618, 'val_mae_dbp': 9.577109172426422}
+{'train_mae_sbp': 17.53365454008413, 'train_mae_dbp': 10.227763737818991, 'val_mae_sbp': 17.843182909077612, 'val_mae_dbp': 9.509999595839401}
+Saving best model
+{'train_mae_sbp': 17.52226260466169, 'train_mae_dbp': 10.152555019356484, 'val_mae_sbp': 17.739069692019758, 'val_mae_dbp': 9.544015111594364}
+{'train_mae_sbp': 17.607076899949895, 'train_mae_dbp': 10.174388290375703, 'val_mae_sbp': 18.581825946939404, 'val_mae_dbp': 10.708445836757791}
+Saving best model
+{'train_mae_sbp': 17.50967132028683, 'train_mae_dbp': 10.107863224754038, 'val_mae_sbp': 17.952353428150044, 'val_mae_dbp': 10.362043841131802}

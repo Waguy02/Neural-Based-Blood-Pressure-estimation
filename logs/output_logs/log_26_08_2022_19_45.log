@@ -1,0 +1,11 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_matnorm_mlp_21\base_matnorm_mlp_21.pt
+Resuming from epoch 18
+Launch training on cuda
+Setting lr to 0.005
+{'train_mae_sbp': 18.205459625162977, 'train_mae_dbp': 9.086467176802614, 'val_mae_sbp': 18.22160465312454, 'val_mae_dbp': 8.944355118949458}
+Saving best model
+{'train_mae_sbp': 18.223153729134417, 'train_mae_dbp': 9.08722450885367, 'val_mae_sbp': 18.018339840870983, 'val_mae_dbp': 8.939829025628432}
+{'train_mae_sbp': 18.15925759254618, 'train_mae_dbp': 9.055181203497217, 'val_mae_sbp': 17.84443695140335, 'val_mae_dbp': 8.776214410673898}
+{'train_mae_sbp': 18.103158624121484, 'train_mae_dbp': 9.062779657891456, 'val_mae_sbp': 17.839622281632334, 'val_mae_dbp': 8.890705432531968}
+{'train_mae_sbp': 18.11837010079242, 'train_mae_dbp': 9.063765744960055, 'val_mae_sbp': 18.271323941788584, 'val_mae_dbp': 9.703326171299196}
+{'train_mae_sbp': 18.191287318696368, 'train_mae_dbp': 9.070790669258605, 'val_mae_sbp': 17.820658251924336, 'val_mae_dbp': 8.768240703726715}

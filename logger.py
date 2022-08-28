@@ -3,10 +3,10 @@ import os
 import sys
 from time import strftime
 from constants import ROOT_DIR
-def setup_logger(args):
+def setup_logger(args=None):
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     a_logger = logging.getLogger()
-    a_logger.setLevel(args.log_level)
+    a_logger.setLevel(args.log_level if args else logging.INFO)
     log_dir=os.path.join(ROOT_DIR,"logs","output_logs")
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)

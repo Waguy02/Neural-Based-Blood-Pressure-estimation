@@ -1,0 +1,13 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_mat_mlp_21\base_mat_mlp_21.pt
+Resuming from epoch 2
+Launch training on cuda
+Setting lr to 0.0001
+Launch training on cuda
+{'epoch': 0, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 0.0001}
+{'epoch': 1, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 0.0001}
+{'epoch': 2, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 0.0001}
+{'epoch': 3, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 0.0001}
+{'epoch': 4, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 0.0001}
+{'epoch': 5, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 5e-05}
+{'epoch': 6, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 5e-05}
+{'epoch': 7, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 5e-05}

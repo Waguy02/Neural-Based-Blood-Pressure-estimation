@@ -2,30 +2,26 @@ import csv
 import json
 import logging
 import os
-import random
 import shutil
-import subprocess
 
 import numpy as np
 import pandas as pd
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from constants import EXPERIMENTS_DIR, DEVICE
 from tqdm import tqdm
-# CUDA for PyTorch
+from constants import DEVICE
 from my_utils import Averager
-from networks.mlp import MLP
 
 
-
-
-
-class TrainerMLP:
+class Trainer:
     """
     Class to manage the full training pipeline
     """
 
-    def __init__(self, network: MLP, train_dataloader, val_dataloader, test_dalaloader, optimizer,
+    def __init__(self, network, train_dataloader, val_dataloader, test_dalaloader, optimizer,
+                 features=None,
+                 scheduler=None,
+
                  nb_epochs=10, batch_size=128, reset=False):
         """
         @param network:
@@ -41,10 +37,12 @@ class TrainerMLP:
         self.val_dataloader=val_dataloader
         self.test_dataloader=test_dalaloader
         self.batch_size = batch_size
+        self.features=features
 
 
         self.optimizer = optimizer
-        self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, mode='min', factor=0.2, patience=5,min_lr=5e-5)
+        self.scheduler =scheduler if scheduler else\
+            torch.optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, mode='min', factor=0.2, patience=10,min_lr=1e-5)
         self.mae = torch.nn.L1Loss(reduction="mean")
         self.mse = torch.nn.MSELoss(reduction="mean")
         self.nb_epochs = nb_epochs
@@ -171,7 +169,7 @@ class TrainerMLP:
             self.summary_writer.add_scalar("Validation_epoch/mse_dbp", running_mse["dbp"].value, epoch)
             self.summary_writer.add_scalar("Validation_epoch/mse_dbp", running_mse["dbp"].value, epoch)
 
-            self.scheduler.step(running_mse["sum"].value)
+            self.scheduler.step(running_mae["sum"].value)
 
             infos = {
                 "epoch": epoch,
@@ -189,6 +187,11 @@ class TrainerMLP:
                 "val_mse": running_mse["sum"].value,
                 "lr": self.optimizer.param_groups[0]['lr']
             }
+            if self.features:
+                infos["features"]=self.features
+
+
+
             if running_mse["sbp"].value < best_mse:
                 best_mse = running_mse["sbp"].value
                 best = True
@@ -205,11 +208,11 @@ class TrainerMLP:
             if not os.path.exists(learning_curve_file):
                 with open(learning_curve_file,"w") as input:
                     writer=csv.writer(input)
-                    header=["Epoch"]+list(infos.keys())
+                    header=list(infos.keys())
                     writer.writerow(header)
             with open(learning_curve_file, "a") as input:
                 writer = csv.writer(input)
-                row=[epoch]+list(infos.values())
+                row=list(infos.values())
                 writer.writerow(row)
 
 
@@ -272,21 +275,6 @@ class TrainerMLP:
                 sbp_pred, dbp_pred = self.network(features.to(DEVICE))
                 sbp_error=torch.abs(sbp_pred.cpu()-sbp_true)
                 dbp_error=torch.abs(dbp_pred.cpu()-dbp_true)
-                # ##FAKE results
-                # sbp_error=torch.abs(torch.normal(torch.ones_like(sbp_true)*3.1,torch.ones_like(sbp_true)*4.5))
-                # # dbp_error=sbp_true.exponential_(5.1)
-                # dbp_error =torch.abs(torch.normal(torch.ones_like(dbp_true) * 5.13,torch.ones_like(dbp_true)*2))
-                # sbp_pred = torch.clone(sbp_true)
-                # dbp_pred = torch.clone(dbp_true)
-                # for i in range(sbp_pred.shape[0]):
-                #     signs_sbp=torch.tensor(np.random.choice([-1,1],sbp_true.shape[1],replace=True))
-                #     signs_dbp=torch.tensor(np.random.choice([-1,1],dbp_true.shape[1],replace=True))
-                #     sbp_pred[i]=sbp_pred[i]+signs_sbp*sbp_error[i]
-                #     dbp_pred[i] =dbp_pred[i] + signs_dbp*dbp_error[i]
-                # ## End fake results
-
-
-
                 """
                 2.Loss computation and other metrics
                 """

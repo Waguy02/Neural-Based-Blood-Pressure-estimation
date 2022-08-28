@@ -1,7 +1,10 @@
 import json
 import os
+from contextlib import contextmanager
 from enum import Enum
 from itertools import islice
+from time import perf_counter
+
 import numpy as np
 import torch
 
@@ -59,6 +62,12 @@ def create_dataloader(dataset, batch_size= 256, shuffle= False, num_workers=2):
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers,drop_last=False)
     return dataloader
 
+
+
+@contextmanager
+def catchtime() -> float:
+    start = perf_counter()
+    yield lambda: perf_counter() - start
 
 class Averager:
     def __init__(self):

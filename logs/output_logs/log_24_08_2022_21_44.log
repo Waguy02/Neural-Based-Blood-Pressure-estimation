@@ -1,0 +1,4 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\extend_mlp_21\extend_mlp_21.pt
+Resuming from epoch 15
+Launch training on cuda
+Setting lr to 0.01

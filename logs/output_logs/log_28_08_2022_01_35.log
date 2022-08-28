@@ -1,0 +1,16 @@
+Loading model state : F:\Projets\Gaby project\NeuralnetworkBPestimationTorch\logs/experiments\base_features_data_mmic\base_features_data_mmic.pt
+Resuming from epoch 42
+Launch training on cuda
+Setting lr to 0.001
+{'train_mae_sbp': 8.925493478775024, 'train_mae_dbp': 4.420006275177002, 'val_mae_sbp': 9.03214168548584, 'val_mae_dbp': 4.407913684844971}
+{'train_mae_sbp': 8.925403952598572, 'train_mae_dbp': 4.422743618488312, 'val_mae_sbp': 9.091248512268066, 'val_mae_dbp': 4.4106950759887695}
+{'train_mae_sbp': 8.901467442512512, 'train_mae_dbp': 4.41503769159317, 'val_mae_sbp': 9.413289070129395, 'val_mae_dbp': 4.468080520629883}
+{'train_mae_sbp': 8.919637799263, 'train_mae_dbp': 4.42222934961319, 'val_mae_sbp': 9.130379676818848, 'val_mae_dbp': 4.479711532592773}
+{'train_mae_sbp': 8.906892895698547, 'train_mae_dbp': 4.4188395738601685, 'val_mae_sbp': 8.97887897491455, 'val_mae_dbp': 4.4120893478393555}
+{'train_mae_sbp': 8.921456694602966, 'train_mae_dbp': 4.4239959716796875, 'val_mae_sbp': 9.194350242614746, 'val_mae_dbp': 4.407057285308838}
+{'train_mae_sbp': 8.909316062927246, 'train_mae_dbp': 4.418034553527832, 'val_mae_sbp': 9.0783109664917, 'val_mae_dbp': 4.40546178817749}
+{'train_mae_sbp': 8.911787867546082, 'train_mae_dbp': 4.425574541091919, 'val_mae_sbp': 9.559962272644043, 'val_mae_dbp': 4.436949729919434}
+{'train_mae_sbp': 8.905657291412354, 'train_mae_dbp': 4.4176220297813416, 'val_mae_sbp': 9.247596740722656, 'val_mae_dbp': 4.4274516105651855}
+{'train_mae_sbp': 8.896948218345642, 'train_mae_dbp': 4.414521098136902, 'val_mae_sbp': 8.99743938446045, 'val_mae_dbp': 4.425090312957764}
+{'train_mae_sbp': 8.909500479698181, 'train_mae_dbp': 4.418238580226898, 'val_mae_sbp': 9.365006446838379, 'val_mae_dbp': 4.429661750793457}
+{'train_mae_sbp': 8.902514696121216, 'train_mae_dbp': 4.415971159934998, 'val_mae_sbp': 8.976213455200195, 'val_mae_dbp': 4.396153926849365}

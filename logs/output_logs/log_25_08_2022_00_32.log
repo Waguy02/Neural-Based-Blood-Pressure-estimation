@@ -1,0 +1,2 @@
+Launch training on cuda
+{'epoch': 0, 'train_mae': nan, 'train_mae_sbp': nan, 'train_mae_dbp': nan, 'val_mae': nan, 'val_mae_sbp': nan, 'val_mae_dbp': nan, 'lr': 0.0001}

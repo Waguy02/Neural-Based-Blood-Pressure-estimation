@@ -15,14 +15,13 @@ from torchvision.transforms import transforms
 from tqdm import tqdm
 from constants import FEATURES_DATA_DIR
 from enum import Enum
-WINDOWS_PER_FILE=6
-
 class DatasetType(Enum):
     TRAIN="train"
     VAL= "val"
     TEST="test"
 class DatasetFeatures(Dataset):
-    def __init__(self, type):
+    def __init__(self,features, type):
+        self.features=features
         self.type=type
         self.load_data()
         pass
@@ -49,7 +48,11 @@ class DatasetFeatures(Dataset):
         Returns:
         """
         self.data_file=os.path.join(FEATURES_DATA_DIR, self.type.value,"all_subjects.csv")
-        self.datas=pd.read_csv(self.data_file,dtype=np.float32).dropna().to_numpy()
+        self.datas=pd.read_csv(self.data_file,dtype=np.float32).dropna()
+        self.datas["SUT_DT_ADD"]=self.datas["SUT"]+self.datas["DT"]
+        self.features=self.datas[self.features].to_numpy()
+        self.targets=self.datas[["SBP","DBP"]].to_numpy()
+
         pass
     def __len__(self):
         return len(self.datas)
@@ -61,8 +64,10 @@ class DatasetFeatures(Dataset):
             idx:
         Returns:
         """
-        current_row=self.datas[idx]
-        features,sbp,dbp=torch.as_tensor(current_row[:-2]),torch.as_tensor(current_row[-2:-1]),torch.as_tensor(current_row[-1:])
+
+        features=torch.as_tensor(self.features[idx])
+
+        sbp,dbp=torch.as_tensor(self.targets[idx][:1]),torch.as_tensor(self.targets[idx][1:])
         return features,sbp,dbp
 
 

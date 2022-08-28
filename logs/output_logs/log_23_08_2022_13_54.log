@@ -1,0 +1,4 @@
+Training : base_mlp
+Resuming from epoch 13
+Launch training on cuda
+Setting lr to 0.0005
