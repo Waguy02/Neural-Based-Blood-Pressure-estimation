@@ -28,6 +28,7 @@ def cli():
     parser.add_argument("--model_name", "-n",help="Name of the model. If not specified, it will be automatically generated")
     parser.add_argument("--num_workers", "-w", type=int, default=0, help="Number of workers for data loading")
     parser.add_argument("--batch_size", "-bs", type=int, default=64, help="Batch size for training")
+    parser.add_argument("--use_temporal_windows","tw",action='store_true',default=False,help="Training using temporal or periodic windows data")
     parser.add_argument("--log_level", "-l", type=str, default="INFO")
 
 
@@ -39,6 +40,7 @@ def main(args):
     experiment_dir=os.path.join(EXPERIMENTS_DIR,model_name)
     network=CnnLSTM(experiment_dir=experiment_dir,reset=args.reset)
     optimizer = torch.optim.Adam(network.parameters(), lr=args.learning_rate)
+
 
 
     train_dataloader = create_dataloader(DatasetWindows(DatasetType.TRAIN), batch_size=args.batch_size, num_workers=args.num_workers, shuffle=True)

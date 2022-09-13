@@ -8,7 +8,7 @@ WINDOWS_DATA_DIR= os.path.join(ROOT_DIR,"data/windows_data_mmic")
 #
 
 
-RAW_DATA_FILE=r"F:\Projets\Gaby project\NeuralnetworkBPestimation\win2_ppg.h5"
+RAW_DATA_DIR=os.path.join(ROOT_DIR,"Rec_mimic")
 
 N_FEATURES=21
 EXPERIMENTS_DIR=os.path.join(ROOT_DIR, "logs/experiments")

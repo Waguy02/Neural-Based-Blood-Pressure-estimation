@@ -32,7 +32,7 @@ from scipy.signal import butter, freqs, filtfilt, argrelextrema
 from sklearn.covariance import EllipticEnvelope
 from sklearn.preprocessing import StandardScaler
 
-from constants import ROOT_DIR
+from constants import ROOT_DIR, RAW_DATA_DIR
 
 """ this function create the window for dividing the ABP and PPG signal
      Arg: sampling frequency, window length, number of samples
@@ -176,7 +176,7 @@ if __name__ == "__main__":
 
     TEMPORAL_WINDOWS=False
 
-    input_data_directory= r"F:\Projets\Gaby project\NeuralnetworkBPestimation\Rec_mimic"
+    input_data_directory=RAW_DATA_DIR
     dataset_output_path= "data/windows_data_mmic/"
 
 

@@ -30,7 +30,7 @@ from scipy.signal import butter, filtfilt
 
 from sklearn.preprocessing import StandardScaler
 
-from constants import ROOT_DIR
+from constants import ROOT_DIR, RAW_DATA_DIR
 from my_utils import catchtime
 
 """ this function create the window for dividing the ABP and PPG signal
@@ -321,7 +321,7 @@ def extract_single_file_segments( file, segments_per_record=500):
 
 
 if __name__ == "__main__":
-    input_data_directory= r"F:\Projets\Gaby project\NeuralnetworkBPestimation\Rec_mimic"
+    input_data_directory=RAW_DATA_DIR
     dataset_output_path= os.path.join(ROOT_DIR,"data/features_data_mmic/")
 
 
