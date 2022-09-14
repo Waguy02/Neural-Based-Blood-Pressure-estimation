@@ -98,4 +98,4 @@ python run_training_mlp.py --features CP DT SUT SUT_DT_ADD SW_DW_ADD50 --model_n
 to train the MLP using the 5 features CP, DT, SUT, SUT_DT_ADD and SW_DW_ADD50. 
 Similarly to the CNN training. The results are store in ./logs/experiments/MODEL_NAME.
 
-By Gabriella WAFFO
+
